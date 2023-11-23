@@ -1,0 +1,13 @@
+1. To tag the image 
+
+   docker tag web:v1 656788/web:v1
+
+2. To build the docker image
+
+   docker image build -t 656788/web:v1 .
+
+3. To push docker image to docker hub
+
+   docker login
+
+   docker push 656788/web:v1

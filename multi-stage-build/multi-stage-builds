@@ -1,0 +1,18 @@
+In Docker, a multi-stage build is a feature that allows you to use multiple FROM statements in your 
+
+dockerfile. Each FROM statement represents a different build stage, and you can copy artifacts from one stage 
+
+to another. This helps in creating smaller and more efficient Docker images.
+
+# First stage: Build stage
+FROM node:14 as builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Second stage: Production-ready image
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+COPY --from=builder /app/dist/ /usr/share/nginx/html

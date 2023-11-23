@@ -1,0 +1,72 @@
+# UNNAMED VOLUMES:
+
+# If u create a container for that container docker is creating temporary volumes inside 
+
+# /var/lib/docker/overlay2/container_id path.
+
+# And if u delete the container this temporary volume gets deleted.
+
+# docker run -d -p 8080:80 -v /home/centos/nginx-data:/usr/share/nginx/html nginx
+
+# docker exec it container_id bash
+
+# cd /usr/share/nginx/html
+
+# echo "hello-docker" > hello.html
+
+# exit
+
+# cd nginx-data
+
+# echo "volumes-data" > volume.html
+
+# ls -l 
+
+# In this folder u should find the both files hello.html and volume.html
+
+# Delete the container still we can see the files present nginx-data folder.
+
+# And create another nginx container and attach this volume to this container.
+
+# docker run -d -p 8080:80 -v /home/centos/nginx-data:/usr/share/nginx/html nginx
+
+# access the nginx server in browser with ip:8080/hello.html
+
+
+# NAMED VOLUMES:
+
+# docker volume create nginx
+
+# /var/lib/docker/volumes/nginx/_data --> named volumes path
+
+# named volumes can be managed with docker commands.
+
+# now instead of creating directory and mounting it on the container we can attach the created volume directly
+
+# to the container.
+
+# docker run -d -p 8080:80 -v nginx:/usr/share/nginx/html nginx
+
+# docker exec -it 7a1c4e1fd2db bash
+
+# cd /usr/share/nginx/html
+
+# echo "hello named volumes" > hi.html
+
+# exit
+
+# sudo -i
+
+# cd /var/lib/docker/volumes/nginx/_data
+
+# ls -l ; the above created file should be present.
+
+# delete the container and go to /var/lib/docker/volumes/nginx/_data path, file should be present.
+
+
+
+
+
+
+
+
