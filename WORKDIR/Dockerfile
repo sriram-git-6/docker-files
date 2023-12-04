@@ -8,3 +8,5 @@
 FROM almalinux:8
 WORKDIR /tmp
 RUN echo "hello-docker" > hello.txt
+
+# docker run -it workdir:v2 bash ---> directly u will be logged into the /tmp directory.  
