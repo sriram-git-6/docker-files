@@ -37,5 +37,7 @@ RUN echo "version is: ${version}"
 RUN echo "course is: ${course}, trainer is: ${trainer}"
 
 # If we want to use the ARG variables while creating containers also then create ENV variable and pass the ARG value to the ENV varaible.
-
+# docker image build -t arg:v1 --build-arg course=devops --build-arg trainer=sriram .
+# docker run -it arg:v1 bash
+# type env command after login into the container there you can find COURSE=devops and TRAINER=sriram
 
